@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'English'
 require 'socket'
 require 'cuid/version'
 begin
@@ -169,7 +170,7 @@ module Cuid
       hostid = hostname.split('').inject(hostname.length + BASE) do |a, i|
         a += (i.respond_to? 'ord') ? i.ord : i[0]
       end
-      format($$, padding) + format(hostid, padding)
+      format($PROCESS_ID, padding) + format(hostid, padding)
     end
   end
 end
