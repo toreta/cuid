@@ -123,7 +123,7 @@ module Cuid
     # @private
     def format(text, size = BLOCK_SIZE)
       base36_text = text.to_s(BASE)
-      (base36_text.length > size) ? trim(base36_text, size) : pad(base36_text, size)
+      base36_text.length > size ? trim(base36_text, size) : pad(base36_text, size)
     end
 
     ##
@@ -152,7 +152,7 @@ module Cuid
       @secure_random = defined?(SecureRandom) if @secure_random.nil?
       number = if @secure_random && @use_secure_random
         SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
-      else
+               else
         ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
                end
       number.truncate.to_s(BASE)
