@@ -20,7 +20,7 @@ module Cuid
   ##
   # @private
   @count = 0
-  
+
   ##
   # length of each segment of the hash
   BLOCK_SIZE = 4
@@ -56,16 +56,16 @@ module Cuid
   class << self
     ##
     # Returns one or more hashes based on the parameter supplied
-    # 
+    #
     # @overload generate()
     #   Returns one hash when called with no parameters or a parameter of 1
-    # 
+    #
     #   @param [optional, Integer] quantity determines number of hashes returned (must be nil, 0 or 1)
     #   @return [String]
     #
     # @overload generate(quantity)
     #   Returns an array of hashes when called with a parameter greater than 1
-    #   
+    #
     #   @param [Integer] quantity determines number of hashes returned (must be greater than 1)
     #   @return [Array<String>]
     #
@@ -89,14 +89,14 @@ module Cuid
     #
     # Validation checks that the first letter is correct and that the rest of the
     # string is the correct length and consists of lower case letters and numbers.
-    # 
+    #
     # @param [String] str string to check
     # @return [Boolean] returns true if the format is correct
     def validate(str)
       blen = BLOCK_SIZE * 6
       !!str.match(/#{LETTER}[a-z0-9]{#{blen}}/)
     end
-   
+
     private
 
     ##
@@ -112,10 +112,10 @@ module Cuid
       counter = pad(@count.to_s(BASE))
 
       @count += 1
-      
+
       return (LETTER + timestamp + counter + @fingerprint + random)
     end
-    
+
     ##
     # Returns a string which has been converted to the correct size alphabet as defined in
     # the BASE constant (e.g. base36) and then padded or trimmed to the correct length.
