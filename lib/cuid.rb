@@ -80,7 +80,7 @@ module Cuid
     #   @return [Array<String>]
     def generate(quantity = 1, secure_random = false)
       @use_secure_random = secure_random
-      @fingerprint = get_fingerprint # only need to get the fingerprint once because it is constant per-run
+      @fingerprint = fingerprint # only need to get the fingerprint once because it is constant per-run
       return api unless quantity > 1
 
       values = Array(1.upto(quantity)) # create an array of the correct size
@@ -109,7 +109,7 @@ module Cuid
     def api
       timestamp = (Time.now.to_f * 1000).truncate.to_s(BASE)
 
-      random = get_random_block
+      random = random_block
 
       @count = @count % DISCRETE_VALUES
       counter = pad(@count.to_s(BASE))
@@ -151,7 +151,7 @@ module Cuid
     # Generates a random string.
     #
     # @private
-    def get_random_block
+    def random_block
       @secure_random = defined?(SecureRandom) if @secure_random.nil?
       number = if @secure_random && @use_secure_random
                  SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
@@ -165,7 +165,7 @@ module Cuid
     # Assembles the host fingerprint based on the hostname and the PID.
     #
     # @private
-    def get_fingerprint
+    def fingerprint
       padding = 2
       hostname = Socket.gethostname
       hostid = hostname.chars.inject(hostname.length + BASE) do |a, i|
