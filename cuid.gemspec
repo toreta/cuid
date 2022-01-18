@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Ian Shannon"]
   s.email       = ["iyshannon@gmail.com"]
   s.homepage    = "http://github.com/iyshannon/cuid"
-  s.summary     = %q{Collision-resistant ids optimized for horizontal scaling and performance}
-  s.description = %q{Ruby implementation of Eric Elliot's javascript cuid}
+  s.summary     = %q(Collision-resistant ids optimized for horizontal scaling and performance)
+  s.description = %q(Ruby implementation of Eric Elliot's javascript cuid)
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
