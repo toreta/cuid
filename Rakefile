@@ -1,8 +1,10 @@
-#!/usr/bin/env rake
-require "bundler/gem_tasks"
-require "rake/testtask"
-Rake::TestTask.new do |t|
-  t.libs << 'lib/cuid'
-  t.verbose = true
+require 'bundler'
+Bundler::GemHelper.install_tasks
+
+task :test do
+  Dir['test/*_test.rb'].each do |testfile|
+    load testfile
+  end
 end
+
 task :default => :test

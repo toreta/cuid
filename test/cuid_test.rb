@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'cuid'
 require 'test/unit'
 
@@ -55,4 +56,3 @@ class CuidTest < Test::Unit::TestCase
     assert_nothing_raised { Cuid::VERSION }
   end
 end
-
