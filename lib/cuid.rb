@@ -3,10 +3,7 @@
 require 'English'
 require 'socket'
 require 'cuid/version'
-begin
-  require 'securerandom'
-rescue LoadError
-end
+require 'securerandom'
 
 ##
 # Cuid is a library for generating unique collision-resistant IDs optimized for horizontal scaling and performance
