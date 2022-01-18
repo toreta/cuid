@@ -151,9 +151,9 @@ module Cuid
     def get_random_block
       @secure_random = defined?(SecureRandom) if @secure_random.nil?
       number = if @secure_random && @use_secure_random
-        SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
+                 SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
                else
-        ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
+                 ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
                end
       number.truncate.to_s(BASE)
     end
