@@ -81,7 +81,7 @@ module Cuid
       return api unless quantity > 1
 
       values = Array(1.upto(quantity)) # create an array of the correct size
-      return values.collect { api } # fill array with hashes
+      values.collect { api } # fill array with hashes
     end
 
     ##
@@ -113,7 +113,7 @@ module Cuid
 
       @count += 1
 
-      return (LETTER + timestamp + counter + @fingerprint + random)
+      (LETTER + timestamp + counter + @fingerprint + random)
     end
 
     ##
@@ -123,7 +123,7 @@ module Cuid
     # @private
     def format(text, size = BLOCK_SIZE)
       base36_text = text.to_s(BASE)
-      return (base36_text.length > size) ? trim(base36_text, size) : pad(base36_text, size)
+      (base36_text.length > size) ? trim(base36_text, size) : pad(base36_text, size)
     end
 
     ##
@@ -132,7 +132,7 @@ module Cuid
     # @private
     def trim(text, max = BLOCK_SIZE)
       original_length = text.length
-      return text[original_length - max, max]
+      text[original_length - max, max]
     end
 
     ##
@@ -141,7 +141,7 @@ module Cuid
     #
     # @private
     def pad(text, size = BLOCK_SIZE)
-      return text.rjust(size, "0")
+      text.rjust(size, "0")
     end
 
     ##
@@ -155,7 +155,7 @@ module Cuid
       else
         ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
                end
-      return number.truncate.to_s(BASE)
+      number.truncate.to_s(BASE)
     end
 
     ##
@@ -168,7 +168,7 @@ module Cuid
       hostid = hostname.split('').inject(hostname.length + BASE) do |a, i|
         a += (i.respond_to? "ord") ? i.ord : i[0]
       end
-      return format($$, padding) + format(hostid, padding)
+      format($$, padding) + format(hostid, padding)
     end
   end
 end
