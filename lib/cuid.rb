@@ -32,7 +32,7 @@ module Cuid
   ##
   # @private
   # maximum number that can be stored in a block of the specified size using the specified alphabet
-  DISCRETE_VALUES = (BASE ** BLOCK_SIZE) - 1
+  DISCRETE_VALUES = (BASE**BLOCK_SIZE) - 1
 
   ##
   # size of the random segment of the block
@@ -41,12 +41,12 @@ module Cuid
   ##
   # @private
   # maximum number that can be stored in the random block
-  RAND_MAX = (BASE ** RAND_SIZE) - 1
+  RAND_MAX = (BASE**RAND_SIZE) - 1
 
   ##
   # @private
   # minimum number that can be stored in the random block (otherwise it will be too short)
-  RAND_MIN = BASE ** (RAND_SIZE - 1)
+  RAND_MIN = BASE**(RAND_SIZE - 1)
 
   ##
   # @private
@@ -132,7 +132,7 @@ module Cuid
     # @private
     def trim(text, max = BLOCK_SIZE)
       original_length = text.length
-      return text[original_length-max, max]
+      return text[original_length - max, max]
     end
 
     ##
@@ -165,7 +165,7 @@ module Cuid
     def get_fingerprint
       padding = 2
       hostname = Socket.gethostname
-      hostid = hostname.split('').inject(hostname.length+BASE) do |a, i|
+      hostid = hostname.split('').inject(hostname.length + BASE) do |a, i|
         a += (i.respond_to? "ord") ? i.ord : i[0]
       end
       return format($$, padding) + format(hostid, padding)
