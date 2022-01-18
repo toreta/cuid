@@ -44,7 +44,7 @@ class CuidTest < Test::Unit::TestCase
   def test_secure_random
     results = {}
     collision = false
-    c = Cuid::generate(1000,true)
+    c = Cuid::generate(1000, true)
     c.each do |e|
       collision = true if results[e]
       results[e] = true

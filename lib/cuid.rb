@@ -75,7 +75,7 @@ module Cuid
     #   @param [Integer] quantity determines number of hashes returned (must be greater than 1)
     #   @param [Boolean] secure_random attempts to use SecureRandom if set to True (Ruby 1.9.2 and up; reverts to Kernel#rand if SecureRandom is not supported)
     #   @return [Array<String>]
-    def generate(quantity=1,secure_random=false)
+    def generate(quantity=1, secure_random=false)
       @use_secure_random = secure_random
       @fingerprint = get_fingerprint # only need to get the fingerprint once because it is constant per-run
       return api unless quantity > 1
@@ -121,18 +121,18 @@ module Cuid
     # the BASE constant (e.g. base36) and then padded or trimmed to the correct length.
     #
     # @private
-    def format(text,size=BLOCK_SIZE)
+    def format(text, size=BLOCK_SIZE)
       base36_text = text.to_s(BASE)
-      return (base36_text.length > size) ? trim(base36_text,size) : pad(base36_text,size)
+      return (base36_text.length > size) ? trim(base36_text, size) : pad(base36_text, size)
     end
 
     ##
     # Returns a string trimmed to the length supplied or BLOCK_SIZE if no length is supplied.
     #
     # @private
-    def trim(text,max=BLOCK_SIZE)
+    def trim(text, max=BLOCK_SIZE)
       original_length = text.length
-      return text[original_length-max,max]
+      return text[original_length-max, max]
     end
 
     ##
@@ -140,8 +140,8 @@ module Cuid
     # BLOCK_SIZE if no length is supplied.
     #
     # @private
-    def pad(text,size=BLOCK_SIZE)
-      return text.rjust(size,"0")
+    def pad(text, size=BLOCK_SIZE)
+      return text.rjust(size, "0")
     end
 
     ##
@@ -165,7 +165,7 @@ module Cuid
     def get_fingerprint
       padding = 2
       hostname = Socket.gethostname
-      hostid = hostname.split('').inject(hostname.length+BASE) do |a,i|
+      hostid = hostname.split('').inject(hostname.length+BASE) do |a, i|
         a += (i.respond_to? "ord") ? i.ord : i[0]
       end
       return format($$, padding) + format(hostid, padding)
