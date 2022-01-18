@@ -1,0 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'doc/**/*'
+    - '.git/**/*'
+  TargetRubyVersion: 2.7
+  SuggestExtensions: false
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'lib/cuid.rb'
