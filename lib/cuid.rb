@@ -54,7 +54,6 @@ module Cuid
   LETTER = "c"
 
   class << self
-
     ##
     # Returns one or more hashes based on the parameter supplied
     # 
@@ -171,6 +170,5 @@ module Cuid
       end
       return format($$, padding) + format(hostid, padding)
     end
-
   end
 end
