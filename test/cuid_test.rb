@@ -33,7 +33,7 @@ class CuidTest < Test::Unit::TestCase
   def test_collision
     results = {}
     collision = false
-    c = Cuid.generate(600000)
+    c = Cuid.generate(600_000)
     c.each do |e|
       collision = true if results[e]
       results[e] = true
