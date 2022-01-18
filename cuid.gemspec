@@ -16,4 +16,5 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ['lib']
   s.metadata['rubygems_mfa_required'] = 'true'
+  s.required_ruby_version = '>= 2.5.0'
 end

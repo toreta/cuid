@@ -5,9 +5,12 @@ AllCops:
   Exclude:
     - 'doc/**/*'
     - '.git/**/*'
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 2.5
   SuggestExtensions: false
 
 Lint/UselessAssignment:
   Exclude:
     - 'lib/cuid.rb'
+
+Style/Documentation:
+  Enabled: false
