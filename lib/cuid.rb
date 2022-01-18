@@ -150,11 +150,11 @@ module Cuid
     # @private
     def get_random_block
       @secure_random = defined?(SecureRandom) if @secure_random.nil?
-      if @secure_random && @use_secure_random then
-        number = SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
+      number = if @secure_random && @use_secure_random then
+        SecureRandom.random_number(RAND_MAX - RAND_MIN) + RAND_MIN
       else
-        number = ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
-      end
+        ((rand * (RAND_MAX - RAND_MIN)) + RAND_MIN)
+               end
       return number.truncate.to_s(BASE)
     end
 
