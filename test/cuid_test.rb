@@ -17,7 +17,7 @@ class CuidTest < Test::Unit::TestCase
   def test_generate_format
     c = Cuid.generate
     assert_equal 25, c.length
-    assert c.start_with? "c"
+    assert c.start_with? 'c'
   end
 
   def test_validate_true
@@ -26,7 +26,7 @@ class CuidTest < Test::Unit::TestCase
   end
 
   def test_validate_false
-    c = "d00000000000000000000"
+    c = 'd00000000000000000000'
     assert !Cuid.validate(c)
   end
 

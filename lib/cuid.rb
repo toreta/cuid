@@ -1,7 +1,7 @@
-require "socket"
+require 'socket'
 require 'cuid/version'
 begin
-  require "securerandom"
+  require 'securerandom'
 rescue LoadError
 end
 
@@ -51,7 +51,7 @@ module Cuid
   ##
   # @private
   # first letter of the hash
-  LETTER = "c"
+  LETTER = 'c'
 
   class << self
     ##
@@ -141,7 +141,7 @@ module Cuid
     #
     # @private
     def pad(text, size = BLOCK_SIZE)
-      text.rjust(size, "0")
+      text.rjust(size, '0')
     end
 
     ##
@@ -166,7 +166,7 @@ module Cuid
       padding = 2
       hostname = Socket.gethostname
       hostid = hostname.split('').inject(hostname.length + BASE) do |a, i|
-        a += (i.respond_to? "ord") ? i.ord : i[0]
+        a += (i.respond_to? 'ord') ? i.ord : i[0]
       end
       format($$, padding) + format(hostid, padding)
     end
