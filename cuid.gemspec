@@ -1,17 +1,20 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "cuid/version"
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path('lib', __dir__)
+require 'cuid/version'
 
 Gem::Specification.new do |s|
-  s.name        = "cuid"
+  s.name        = 'cuid'
   s.version     = Cuid::VERSION
-  s.authors     = ["Ian Shannon"]
-  s.email       = ["iyshannon@gmail.com"]
-  s.homepage    = "http://github.com/iyshannon/cuid"
-  s.summary     = %q{Collision-resistant ids optimized for horizontal scaling and performance}
-  s.description = %q{Ruby implementation of Eric Elliot's javascript cuid}
+  s.authors     = ['Ian Shannon']
+  s.email       = ['iyshannon@gmail.com']
+  s.homepage    = 'http://github.com/iyshannon/cuid'
+  s.summary     = 'Collision-resistant ids optimized for horizontal scaling and performance'
+  s.description = "Ruby implementation of Eric Elliot's javascript cuid"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.require_paths = ["lib"]
+  s.require_paths = ['lib']
+  s.metadata['rubygems_mfa_required'] = 'true'
+  s.required_ruby_version = '>= 2.5.0'
 end

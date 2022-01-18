@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
@@ -7,4 +9,4 @@ task :test do
   end
 end
 
-task :default => :test
+task default: :test
