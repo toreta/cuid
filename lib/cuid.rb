@@ -167,7 +167,7 @@ module Cuid
     def get_fingerprint
       padding = 2
       hostname = Socket.gethostname
-      hostid = hostname.split('').inject(hostname.length + BASE) do |a, i|
+      hostid = hostname.chars.inject(hostname.length + BASE) do |a, i|
         a += (i.respond_to? 'ord') ? i.ord : i[0]
       end
       format($PROCESS_ID, padding) + format(hostid, padding)
